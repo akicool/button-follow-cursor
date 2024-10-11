@@ -1,7 +1,6 @@
 {
-  "name": "mad-button",
-  "private": true,
-  "version": "0.0.0",
+  "name": "button-follow-cursor",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -26,5 +25,22 @@
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.5"
-  }
+  },
+  "description": "Button Follow Cursor",
+  "main": "/src/Button.jsx",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akicool/button-follow-cursor.git"
+  },
+  "keywords": [
+    "Button",
+    "Follow",
+    "Cursor"
+  ],
+  "author": "akicool",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akicool/button-follow-cursor/issues"
+  },
+  "homepage": "https://github.com/akicool/button-follow-cursor#readme"
 }
