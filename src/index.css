@@ -26,3 +26,11 @@
 h1 {
   font-size: 2rem;
 }
+
+/* .hover-scale:hover {
+  scale: 0.96;
+} */
+
+.active-scale:active {
+  scale: 0.93;
+}
