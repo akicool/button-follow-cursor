@@ -1,5 +1,6 @@
 import { memo, useState } from "react";
 import clsx from "clsx";
+import "./style.css";
 
 export const ButtonFollowCursor = memo(
   ({
