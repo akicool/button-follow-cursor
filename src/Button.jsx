@@ -1,83 +1,78 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import clsx from "clsx";
 
-export const ButtonFollowCursor = ({
-  children,
-  coordsOn,
-  secondary,
-  onClick,
-  maxWidth,
-  type,
-  className,
-}) => {
-  const [coords, setCoords] = useState({ x: -30, y: -30 });
+export const ButtonFollowCursor = memo(
+  ({
+    children,
+    coordsOn,
+    type,
+    onClick,
+    activeScale,
+    className,
+    background,
+    foreground,
+    initialCoordinates,
+  }) => {
+    const [coords, setCoords] = useState({
+      x: initialCoordinates?.x || 0,
+      y: initialCoordinates?.y || 0,
+    });
 
-  const handleButtonClick = () => {
-    const buttonCoords = { x: 0, y: 0 };
-    setCoords(buttonCoords);
+    const handleButtonClick = () => {
+      const defaultCoordinates = { x: 0, y: 0 };
+      setCoords(defaultCoordinates);
 
-    if (onClick) {
-      onClick();
-    }
-  };
+      if (onClick) {
+        onClick();
+      }
+    };
 
-  if (coordsOn) {
-    return (
-      <div
-        className={clsx(
-          "bg-red-500 rounded h-11 min-w-[11.25rem] w-full",
-          className
-        )}
-        onMouseMove={(event) => {
-          const buttonRect = event.currentTarget.getBoundingClientRect();
-          setCoords({
-            x: event.clientX - buttonRect.left - buttonRect.width / 2,
-            y: event.clientY - buttonRect.top - buttonRect.height / 2,
-          });
-        }}
-        onMouseLeave={() => {
-          setCoords({
-            x: -30,
-            y: -30,
-          });
-        }}
-      >
-        <button
-          type={type}
-          className={clsx(
-            "relative whitespace-nowrap h-full text-black py-2 px-7 hover:scale-[.96] active:scale-100 rounded box-decoration-clone w-full text-base font-semibold",
-            secondary
-              ? "border-solid border-2 border-heavyWhite bg-black text-white"
-              : "bg-white"
-          )}
-          onClick={handleButtonClick}
-          style={{
-            transition: ".2s ease-out",
-            transform: `translate(${coords.x / 5}px, ${coords.y / 5}px`,
+    if (coordsOn) {
+      return (
+        <div
+          className={clsx(className, background)}
+          onMouseMove={(event) => {
+            const buttonRect = event.currentTarget.getBoundingClientRect();
+            setCoords({
+              x: event.clientX - buttonRect.left - buttonRect.width / 2,
+              y: event.clientY - buttonRect.top - buttonRect.height / 2,
+            });
+          }}
+          onMouseLeave={() => {
+            setCoords({
+              x: initialCoordinates?.x || 0,
+              y: initialCoordinates?.y || 0,
+            });
           }}
         >
-          <div className="absolute left-0 top-0 z-10 grid h-full w-full place-items-center">
-            {children}
-          </div>
-        </button>
-      </div>
+          <button
+            type={type}
+            className={clsx(
+              "relative whitespace-nowrap w-full h-full py-2 px-7 rounded box-decoration-clone text-base font-semibold",
+              activeScale && "active-scale",
+              foreground || "bg-white text-black"
+            )}
+            onClick={handleButtonClick}
+            style={{
+              transition: ".2s ease-out",
+              transform: `translate(${coords.x / 5}px, ${coords.y / 5}px`,
+            }}
+          >
+            <div className="absolute left-0 top-0 z-10 grid h-full w-full place-items-center">
+              {children}
+            </div>
+          </button>
+        </div>
+      );
+    }
+
+    return (
+      <button
+        type={type}
+        className="text-black w-fit relative py-2 h-11 px-7 active:scale-[.93] rounded bg-white box-decoration-clone text-base font-semibold"
+      >
+        {children}
+      </button>
     );
   }
-
-  return (
-    <button
-      type={type}
-      className={clsx(
-        "text-black relative py-2 h-11 px-7 hover:scale-[.96] rounded bg-white box-decoration-clone w-full overflow-hidden text-base font-semibold",
-        maxWidth || "min-w-[11.25rem]",
-        secondary &&
-          "border-solid border-2 border-heavyWhite bg-black text-white"
-      )}
-      onClick={handleButtonClick}
-    >
-      <div className="absolute left-0 top-0 z-10 grid h-full w-full place-items-center">
-        {children}
-      </div>
-    </button>
-  );
-};
+);
