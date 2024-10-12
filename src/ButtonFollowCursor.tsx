@@ -1,6 +1,17 @@
-import { memo, useState } from "react";
+import { memo, ReactNode, useState } from "react";
 import clsx from "clsx";
-import "./style.css";
+
+type Props = {
+  children?: ReactNode;
+  coordsOn?: boolean;
+  type?: "button" | "submit" | "reset";
+  onClick?: () => void;
+  activeScale?: boolean;
+  className?: string;
+  background?: string;
+  foreground?: string;
+  initialCoordinates?: { x: number; y: number } | undefined;
+};
 
 export const ButtonFollowCursor = memo(
   ({
@@ -13,7 +24,7 @@ export const ButtonFollowCursor = memo(
     background,
     foreground,
     initialCoordinates,
-  }) => {
+  }: Props) => {
     const [coords, setCoords] = useState({
       x: initialCoordinates?.x || 0,
       y: initialCoordinates?.y || 0,
