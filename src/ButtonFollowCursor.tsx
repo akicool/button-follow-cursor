@@ -2,14 +2,14 @@ import { memo, ReactNode, useState } from "react";
 import clsx from "clsx";
 
 type Props = {
-  children: ReactNode;
-  coordsOn: boolean;
+  children?: ReactNode;
+  coordsOn?: boolean;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   activeScale: boolean;
   className?: string;
-  background: string;
-  foreground: string;
+  background?: string;
+  foreground?: string;
   initialCoordinates?: { x: number; y: number } | undefined;
 };
 
