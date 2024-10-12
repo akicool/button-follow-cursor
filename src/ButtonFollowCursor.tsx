@@ -6,7 +6,7 @@ type Props = {
   coordsOn?: boolean;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
-  activeScale: boolean;
+  activeScale?: boolean;
   className?: string;
   background?: string;
   foreground?: string;
