@@ -17,7 +17,7 @@ To use the component in your project, follow these steps:
 ### Basic Example:
 
 ```tsx
-import { ButtonFollowCursor } from "./ButtonFollowCursor";
+import { ButtonFollowCursor } from "button-follow-cursor";
 
 function App() {
   return (
