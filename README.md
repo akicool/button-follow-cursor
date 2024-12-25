@@ -10,7 +10,11 @@ To use the component in your project, follow these steps:
    ```bash
    npm install clsx
    ```
-2. Copy the `ButtonFollowCursor` component into your project or install the library if it’s published (e.g., via npm or GitHub).
+2. Install the required dependencies:
+   ```bash
+   npm install button-follow-cursor
+   ```
+3. Copy the `ButtonFollowCursor` component into your project or install the library if it’s published (e.g., via npm or GitHub).
 
 ## Usage
 
