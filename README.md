@@ -10,7 +10,7 @@ To use the component in your project, follow these steps:
    ```bash
    npm install clsx
    ```
-2. Install the required dependencies:
+2. Install the library:
    ```bash
    npm install button-follow-cursor
    ```
